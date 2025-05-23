@@ -1,0 +1,29 @@
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">📊 Upload CSV and Train Model</h2>
+
+    <form method="post" enctype="multipart/form-data" class="border p-4 rounded shadow-sm bg-light">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary mt-2">Train Model</button>
+    </form>
+
+    {% if accuracy %}
+        <div class="alert alert-success mt-4" role="alert">
+            <strong></strong> Model Accuracy:</strong> {{ accuracy }}%
+        </div>
+    {% endif %}
+
+    {% if plot_url %}
+        <div class="mt-4">
+            <h3 class="text-center">📈 Data Visualization</h3>
+            <img src="{{ plot_url }}" alt="Scatter Plot" class="img-fluid rounded shadow-sm mt-2">
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="alert alert-warning mt-4" role="alert">
+             <strong>Error:</strong> {{ error }}
+        </div>
+    {% endif %}
+</div>
+

@@ -1,0 +1,16 @@
+<h2>Upload and Visualize CSV</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Upload</button>
+</form>
+
+{% if plot_url %}
+    <h3>Scatter Plot:</h3>
+    <img src="{{ plot_url }}" alt="Data Plot">
+{% endif %}
+
+{% if error %}
+    <p style="color: rgb(255, 187, 0);">Error: {{ error }}</p>
+{% endif %}
